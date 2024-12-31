@@ -2,7 +2,8 @@ package guru.springframework.springaipromptengineering;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.autoconfigure.openai.OpenAiChatProperties;
-import org.springframework.ai.chat.ChatResponse;
+
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,7 +29,7 @@ public class ChainOfThoughtTests extends BaseTestClass {
 
         PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
-        ChatResponse response = openAiChatClient.call(promptTemplate.create());
+        ChatResponse response = chatModel.call(promptTemplate.create());
 
         //models previously would answer 27
         System.out.println(response.getResult().getOutput().getContent());
@@ -48,7 +49,7 @@ public class ChainOfThoughtTests extends BaseTestClass {
 
         PromptTemplate promptTemplate = new PromptTemplate(chainOfThoughtPrompt);
 
-        ChatResponse response = openAiChatClient.call(promptTemplate.create());
+        ChatResponse response = chatModel.call(promptTemplate.create());
 
         System.out.println(response.getResult().getOutput().getContent());
     }
@@ -62,7 +63,7 @@ public class ChainOfThoughtTests extends BaseTestClass {
 
         PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
-        ChatResponse response = openAiChatClient.call(promptTemplate.create());
+        ChatResponse response = chatModel.call(promptTemplate.create());
 
         //models previously would answer 27
         System.out.println(response.getResult().getOutput().getContent());

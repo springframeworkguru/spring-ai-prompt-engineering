@@ -66,7 +66,7 @@ public class InferenceTests extends BaseTestClass {
                         "review5", review5,
                         "review6", review6));
 
-        System.out.println(openAiChatClient.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
     }
 
     String emotionPrompt = """
@@ -91,7 +91,7 @@ public class InferenceTests extends BaseTestClass {
                         "review5", review5,
                         "review6", review6));
 
-        System.out.println(openAiChatClient.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
     }
 
     String angerTestPrompt = """
@@ -122,7 +122,7 @@ public class InferenceTests extends BaseTestClass {
                         "review5", review5,
                         "review6", review6));
 
-        System.out.println(openAiChatClient.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
     }
 
     String story = """
@@ -170,6 +170,6 @@ public class InferenceTests extends BaseTestClass {
         PromptTemplate promptTemplate = new PromptTemplate(prompt,
                 Map.of("story", story));
 
-        System.out.println(openAiChatClient.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
     }
 }

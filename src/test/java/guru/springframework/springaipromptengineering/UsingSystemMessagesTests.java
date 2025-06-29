@@ -34,7 +34,7 @@ public class UsingSystemMessagesTests extends BaseTestClass {
 
         Prompt prompt = new Prompt(messages);
 
-        System.out.println(chatModel.call(prompt).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(prompt).getResult().getOutput().getText());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class UsingSystemMessagesTests extends BaseTestClass {
 
         Prompt prompt = new Prompt(messages);
 
-        System.out.println(chatModel.call(prompt).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(prompt).getResult().getOutput().getText());
     }
 
     String cookASteak = """
@@ -84,7 +84,7 @@ public class UsingSystemMessagesTests extends BaseTestClass {
 
         Prompt prompt = new Prompt(messages);
 
-        System.out.println(chatModel.call(prompt).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(prompt).getResult().getOutput().getText());
     }
 
     @Test
@@ -104,6 +104,6 @@ public class UsingSystemMessagesTests extends BaseTestClass {
 
         Prompt prompt = new Prompt(messages);
 
-        System.out.println(chatModel.call(prompt).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(prompt).getResult().getOutput().getText());
     }
 }

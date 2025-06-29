@@ -33,7 +33,7 @@ public class GiveClearInstructionsTests extends BaseTestClass {
     }
     //yaml
     @Test
-    void testGetYAML() {
+    void testGetYaml() {
         String prompt = """
                 Generate a list of 4 made up cars. Provide them in a YAML format
                 with the following attributes: make, model, year, and color. Return the YAML string.
@@ -77,31 +77,32 @@ public class GiveClearInstructionsTests extends BaseTestClass {
 
     @Test
     void testCookSteak() {
-        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt, Map.of("text_1", cookASteak));
+        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt);
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("text_1", cookASteak))).getResult().getOutput().getText());
     }
 
     @Test
     void testBookDescription() {
-        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt, Map.of("text_1", bookDescription));
+        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt);
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("text_1", bookDescription))).getResult().getOutput().getText());
     }
 
     @Test
     void testCookSteakAsSnoopDog() {
-        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt + "Give the directions using the tone of Snoop Dog",
-                Map.of("text_1", cookASteak));
+        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt
+                + " Give the directions using the tone of Snoop Dog");
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("text_1", cookASteak))).getResult().getOutput().getText());
     }
 
     @Test
     void testCookSteakAsHarryPotter() {
-        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt + "Give the directions using the tone, tools and imagination of JK Rowling in a Harry Potter book",
-                Map.of("text_1", cookASteak));
+        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt
+                + "Give the directions using the tone, tools and imagination of JK Rowling in a Harry Potter book");
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("text_1", cookASteak))).getResult().getOutput().getText());
     }
+
 }

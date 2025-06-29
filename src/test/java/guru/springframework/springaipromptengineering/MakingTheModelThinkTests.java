@@ -39,10 +39,9 @@ public class MakingTheModelThinkTests extends BaseTestClass {
 
     @Test
     void testSteps() {
-        PromptTemplate promptTemplate = new PromptTemplate(prompt ,
-                Map.of("text", story));
+        PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("text", story))).getResult().getOutput().getText());
 
     }
 
@@ -73,7 +72,7 @@ public class MakingTheModelThinkTests extends BaseTestClass {
     void testIncorrectPrompt() {
         PromptTemplate promptTemplate = new PromptTemplate(prompt2Incorrect);
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getText());
     }
 
     String prompt3Correct = """
@@ -129,15 +128,17 @@ public class MakingTheModelThinkTests extends BaseTestClass {
     void testCorrectPrompt() {
         PromptTemplate promptTemplate = new PromptTemplate(prompt3Correct);
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getText());
     }
 
     String prompt4 = """
-       You are an expert at solving reasoning problems. A cup is an object with an open top and close on the sides and bottom. The open top does not prevent objects from passing through it.
+       You are an expert at solving reasoning problems. A cup is an object with an open top and close on the sides and bottom. 
+       The open top does not prevent objects from passing through it.
        
-       Assume the laws of physics on Earth. A small marble is put into a normal cup and the cup is placed upside down on a table,
-        causing the open side of the cup to be in contact with the table. Gravity will cause the ball to fall to the table.
-       Someone then picks the cup up without changing its orientation and puts it inside the microwave. Where is the ball now. Determine the position of the ball in each step. Explain 
+       Assume the laws of physics on Earth. A small marble is put into a normal cup and the cup is placed upside down on a 
+       table, causing the open side of the cup to be in contact with the table. Gravity will cause the ball to fall to the table.
+       Someone then picks the cup up without changing its orientation and puts it inside the microwave. Where is the ball 
+       now. Determine the position of the ball in each step. Explain 
        why the ball is postioned where it is.
        """;
 
@@ -145,7 +146,7 @@ public class MakingTheModelThinkTests extends BaseTestClass {
     void testTheBallPrompt() {
         PromptTemplate promptTemplate = new PromptTemplate(prompt4);
 
-        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getText());
     }
 
 }
